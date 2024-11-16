@@ -15,8 +15,8 @@ class FilmController extends Controller
      */
     public function index()
     {
-        $films = Film::all();
-        return view('films.index',compact('films'));
+        $films = Film::paginate(20);
+        return view('admin.films.index',compact('films'));
     }
 
     /**
@@ -25,7 +25,7 @@ class FilmController extends Controller
     public function create()
     {
         $film = new Film();
-        return view('films.create',compact('film'));
+        return view('admin.films.create',compact('film'));
     }
 
     /**
@@ -33,9 +33,9 @@ class FilmController extends Controller
      */
     public function store(StoreFilmRequest $request)
     {
-        $data = request()->validated();
+        $data = $request->validated();
         $film = Film::create($data);
-        redirect()->route('films.index');
+        return redirect()->route('admin.films.index');
     }
 
     /**
@@ -43,7 +43,7 @@ class FilmController extends Controller
      */
     public function show(Film $film)
     {
-        return view('films.show', compact('film'));
+        return view('admin.films.show', compact('film'));
     }
 
     /**
@@ -51,7 +51,7 @@ class FilmController extends Controller
      */
     public function edit(Film $film)
     {
-        return view('films.edit',compact('film'));
+        return view('admin.films.edit',compact('film'));
     }
 
     /**
@@ -59,19 +59,10 @@ class FilmController extends Controller
      */
     public function update(UpdateFilmRequest $request, Film $film)
     {
-        $request->validate();
+        $data = $request->validated();
+        $film->update($data);
 
-        $formData = $request->all();
-        $film = Film::create();
-
-        // $film->title = $formData["title"];
-        // $film->date_of_release = $formData["date_of_release"];
-        // $film->director = $formData["director"];
-        // $film->description = $formData["description"];
-
-        $film->update();
-
-        return redirect()->route('films.show', $film);
+        return redirect()->route('admin.films.show', $film);
 
     }
 
@@ -81,6 +72,6 @@ class FilmController extends Controller
     public function destroy(Film $film)
     {
         $film->delete();
-        return redirect()->route('films.index');
+        return redirect()->route('admin.films.index');
     }
 }

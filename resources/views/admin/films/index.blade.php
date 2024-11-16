@@ -52,6 +52,9 @@
                         @endforelse
                     </tbody>
                 </table>
+                {{-- <div>
+                    {{ $films->links() }}
+                </div> --}}
             </div>
         </div>
     </div>
