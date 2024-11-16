@@ -63,8 +63,9 @@ class FilmController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Film $film)
     {
-        //
+        $film->delete();
+        return redirect()->route('admin.films.index');
     }
 }
