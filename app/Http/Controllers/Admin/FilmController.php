@@ -14,7 +14,7 @@ class FilmController extends Controller
     public function index()
     {
         $films = Film::all();
-        return view('admin.films.index',compact('films'));
+        return view('films.index',compact('films'));
     }
 
     /**
@@ -23,7 +23,7 @@ class FilmController extends Controller
     public function create()
     {
         $film = new Film();
-        return view('admin.films.create',compact('film'));
+        return view('films.create',compact('film'));
     }
 
     /**
@@ -33,7 +33,7 @@ class FilmController extends Controller
     {
         $data = request()->validated();
         $film = Film::create($data);
-        redirect()->route('admin.films.index');
+        redirect()->route('films.index');
     }
 
     /**
@@ -41,7 +41,7 @@ class FilmController extends Controller
      */
     public function show(Film $film)
     {
-        redirect()->route('admin.films.show', compact('film'));
+        redirect()->route('films.show', compact('film'));
     }
 
     /**
@@ -49,7 +49,7 @@ class FilmController extends Controller
      */
     public function edit(Film $film)
     {
-        return view('admin.films.edit',compact('film'));
+        return view('films.edit',compact('film'));
     }
 
     /**
@@ -66,6 +66,6 @@ class FilmController extends Controller
     public function destroy(Film $film)
     {
         $film->delete();
-        return redirect()->route('admin.films.index');
+        return redirect()->route('films.index');
     }
 }
