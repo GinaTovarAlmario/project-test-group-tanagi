@@ -27,9 +27,9 @@ Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function(){
     Route::get('/films',[AdminFilmController::class,'index'])->name('films.index');
     Route::post('/films',[AdminFilmController::class,'store'])->name('films.store');
     Route::get('/films/create',[AdminFilmController::class,'create'])->name('films.create');
-    Route::get('/films/{id}',[AdminFilmController::class,'destroy'])->name('films.delete');
-    Route::put('/films/{id}',[AdminFilmController::class,'update'])->name('films.update');
-    Route::get('/films/{id}',[AdminFilmController::class,'show'])->name('films.show');
-    Route::get('/films/{id}/edit',[AdminFilmController::class,'edit'])->name('films.edit');
+    Route::get('/films/{film}',[AdminFilmController::class,'destroy'])->name('films.delete');
+    Route::put('/films/{film}',[AdminFilmController::class,'update'])->name('films.update');
+    Route::get('/films/{film}',[AdminFilmController::class,'show'])->name('films.show');
+    Route::get('/films/{film}/edit',[AdminFilmController::class,'edit'])->name('films.edit');
 
 });

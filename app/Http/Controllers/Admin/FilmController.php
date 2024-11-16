@@ -43,7 +43,7 @@ class FilmController extends Controller
      */
     public function show(Film $film)
     {
-        redirect()->route('films.show', compact('film'));
+        return view('films.show', compact('film'));
     }
 
     /**
@@ -64,16 +64,14 @@ class FilmController extends Controller
         $formData = $request->all();
         $film = Film::create();
 
-        $film->title = $formData["title"];
-        $film->date_of_release = $formData["date_of_release"];
-        $film->director = $formData["director"];
-        $film->description = $formData["description"];
+        // $film->title = $formData["title"];
+        // $film->date_of_release = $formData["date_of_release"];
+        // $film->director = $formData["director"];
+        // $film->description = $formData["description"];
 
         $film->update();
 
-
-        return redirect()->route("films.show", [ "id" => $film->id]);
-
+        return redirect()->route('admin.projects.show', $film);
 
     }
 

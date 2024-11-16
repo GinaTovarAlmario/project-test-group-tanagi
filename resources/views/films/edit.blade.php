@@ -8,7 +8,7 @@
                     Editing {{ $film->title }}
                 </h1>
             </div>
-            <form class="col-8 card bg-dark-subtle m-3" method="POST" action="{{ route('admin.films.update', $film->id) }}">
+            <form class="col-8 card bg-dark-subtle m-3" method="POST" action="{{ route('admin.films.update', $film) }}">
                 @method('PUT')
                 @csrf
                 <div class="mb-3">
@@ -43,8 +43,9 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Brief Description</label>
-                    <textarea class="form-control" id="description" name="description"
-                        value="{{ old('description', $film->description) }}" rows="8"></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="8">
+                        {{ old('description', $film->description) }}
+                    </textarea>
                     @error('description')
                         <div class="alert alert-danger">
                             {{ $message }}
