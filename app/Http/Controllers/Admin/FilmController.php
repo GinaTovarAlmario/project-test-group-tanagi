@@ -22,7 +22,8 @@ class FilmController extends Controller
      */
     public function create()
     {
-        //
+        $film = new Film();
+        return view('admin.films.create',compact('film'));
     }
 
     /**
