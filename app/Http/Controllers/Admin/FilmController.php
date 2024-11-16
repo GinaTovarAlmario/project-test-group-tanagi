@@ -39,9 +39,9 @@ class FilmController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Film $film)
     {
-        //
+        redirect()->route('admin.films.show', compact('film'));
     }
 
     /**
