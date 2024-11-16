@@ -16,7 +16,7 @@ class FilmSeeder extends Seeder
     {
         for($i = 0; $i < 100 ; $i++){
             $newFilm = new Film();
-            $newFilm->title = $faker->realTextBetween(10,60);
+            $newFilm->title = $faker->unique()->realTextBetween(3,20);
             $newFilm->director = $faker->name();
             $newFilm->date_of_release = $faker->date();
             $newFilm->description = $faker->realTextBetween(300,800);
