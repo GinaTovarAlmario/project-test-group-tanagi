@@ -31,7 +31,9 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validated();
+        $film = Film::create($data);
+        redirect()->route('admin.films.index');
     }
 
     /**
