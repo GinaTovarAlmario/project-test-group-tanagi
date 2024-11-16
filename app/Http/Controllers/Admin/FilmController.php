@@ -47,9 +47,9 @@ class FilmController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Film $film)
     {
-        //
+        return view('admin.films.edit',compact('film'));
     }
 
     /**
