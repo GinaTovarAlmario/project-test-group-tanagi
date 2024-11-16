@@ -27,6 +27,8 @@ Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function(){
     Route::get('/films',[AdminFilmController::class,'index'])->name('films.index');
     Route::post('/films',[AdminFilmController::class,'store'])->name('films.store');
     Route::get('/films/create',[AdminFilmController::class,'create'])->name('films.create');
+    Route::get('/films/{id}',[AdminFilmController::class,'destroy'])->name('films.delete');
+
 
 
 
