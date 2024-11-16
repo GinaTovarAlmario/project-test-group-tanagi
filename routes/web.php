@@ -26,6 +26,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function(){
     Route::get('/films',[AdminFilmController::class,'index'])->name('films.index');
     Route::post('/films',[AdminFilmController::class,'store'])->name('films.store');
+    Route::get('/films/create',[AdminFilmController::class,'create'])->name('films.create');
+
 
 
 });
