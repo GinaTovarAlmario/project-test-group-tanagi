@@ -32,7 +32,7 @@
                                 <td>
                                     <a href="{{ route('admin.films.show', $film->id) }}" class="btn btn-sm btn-success me-2">Show</a>
                                     <a href="{{ route('admin.films.edit', $film->id) }}" class="btn btn-sm btn-warning me-2">Edit</a>
-                                    {{-- <form action="{{ route('admin.films.delete', $film->id) }}" method="POST"
+                                    <form action="{{ route('admin.films.delete', $film->id) }}" method="POST"
                                         class="d-inline">
                                         @csrf
                                         @method('DELETE')
@@ -40,7 +40,7 @@
                                         <button type="submit" class="btn btn-sm btn-danger text-white">
                                             Delete
                                         </button>
-                                    </form> --}}
+                                    </form>
                                 </td>
                             </tr>
                         @empty
@@ -52,9 +52,9 @@
                         @endforelse
                     </tbody>
                 </table>
-                {{-- <div>
+                <div>
                     {{ $films->links() }}
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>
