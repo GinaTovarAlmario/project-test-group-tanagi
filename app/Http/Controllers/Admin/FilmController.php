@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreFilmRequest;
+use App\Http\Requests\UpdateFilmRequest;
 use App\Models\Film;
 use Illuminate\Http\Request;
 
@@ -29,7 +31,7 @@ class FilmController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreFilmRequest $request)
     {
         $data = request()->validated();
         $film = Film::create($data);
@@ -55,9 +57,24 @@ class FilmController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateFilmRequest $request, Film $film)
     {
-        //
+        $request->validate();
+
+        $formData = $request->all();
+        $film = Film::create();
+
+        $film->title = $formData["title"];
+        $film->date_of_release = $formData["date_of_release"];
+        $film->director = $formData["director"];
+        $film->description = $formData["description"];
+
+        $film->update();
+
+
+        return redirect()->route("films.show", [ "id" => $film->id]);
+
+
     }
 
     /**

@@ -19,7 +19,7 @@
                     </ul>
                 </div>
             @endif
-            <form class="col-8 card bg-dark-subtle m-3" method="POST" action="{{ route('admin.film.store') }}">
+            <form class="col-8 card bg-dark-subtle m-3" method="POST" action="{{ route('admin.films.store') }}">
                 @csrf
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -41,9 +41,9 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="author" class="form-label">Author</label>
-                    <input type="text" class="form-control" id="author" name="author" value="{{ old('author') }}">
-                    @error('author')
+                    <label for="director" class="form-label">Director</label>
+                    <input type="text" class="form-control" id="director" name="director" value="{{ old('director') }}">
+                    @error('director')
                         <div class="alert alert-danger">
                             {{ $message }}
                         </div>
@@ -59,7 +59,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-succes me-3">
+                    <button type="submit" class="btn btn-success me-3">
                         Create New Film
                     </button>
                     <button type="reset" class="btn btn-danger me-3">
