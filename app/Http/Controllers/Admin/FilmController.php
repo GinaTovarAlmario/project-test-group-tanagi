@@ -71,7 +71,7 @@ class FilmController extends Controller
 
         $film->update();
 
-        return redirect()->route('admin.projects.show', $film);
+        return redirect()->route('films.show', $film);
 
     }
 
